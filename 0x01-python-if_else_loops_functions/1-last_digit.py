@@ -7,7 +7,7 @@ else:
         lastDigit = number % 10
 
         if(number == 0):
-                print("The last digit of", number, "is",lastDigit)
+                print("The last digit of", number, "is",lastDigit,' and is 0')
         elif(number > 5):
                 print("The last digit of", number, "is",lastDigit,"and is greater than 5")
         elif(number<6 and number != 0):
