@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-def isupper(c):
-    return (64 <= ord(c) <= 90)
+def uppercase(str):
+    return (ord(str) > 64 and ord(c) < 91)
