@@ -2,9 +2,7 @@
 def best_score(a_dictionary):
     if a_dictionary is None:
         return None
-    else:
-        maxi = max(a_dictionary.values(), default=None)
-        for key, value in a_dictionary.items():
-            if value == maxi:
+    MAXI = max(a_dictionary.values(), default=None)
+    for key, value in a_dictionary.items():
+        if value == maxi:
             return key
-    
