@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""Area and Perimeter
+Task:
+    print() and str() should print the rectangle
+    with the character #
+"""
 
 
 class Rectangle:
