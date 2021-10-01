@@ -1,10 +1,11 @@
 #!/usr/bin/python3
+"""
+This contains a locked class
+"""
 
 
 class LockedClass:
     """
-    Prevent the user from instantiating new LockedClass attributes
-    for anything but attributes called 'first_name'.
+    This class has no class or object attribute
     """
-
-    __slots__ = ["first_name"]
+    __slots__ = "first_name"
