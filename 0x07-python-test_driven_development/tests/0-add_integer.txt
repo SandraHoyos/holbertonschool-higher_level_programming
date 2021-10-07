@@ -1,67 +1,62 @@
-A test to for adding two inteter
-
-Import Python module + collections
->>> import sys
->>> sys.path.insert(1, '../')
->>> lib = __import__("0-add_integer")
->>> add_integer = lib.add_integer
-
-# addition test
-
->>> add_integer(10,10)
-20
->>> add_integer(100)
-198
->>> add_integer(-1)
-97
->>> add_integer(10.3,-5)
-108
+>>> add_integer = __import__('0-add_integer').add_integer
+>>> add_integer(8, 2)
+10
+>>> add_integer(2, 5.0)
+7
+>>> add_integer(90, 2)
+92
+>>> add_integer(10.3, -5)
+5
+>>> add_integer(100.3, -2.9)
+98
+>>> add_integer(1)
+99
 
 """
-Type Errors
-
+Error
 """
-
 >>> add_integer("a", "b")
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
->>> add_integer([])
+>>> add_integer(1, '33')
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+>>> add_integer(1, [19.8])
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+>>> add_integer(None, 50)
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
->>> add_integer({})
+>>> add_integer(2, None)
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+>>> add_integer(12, float('NaN'))
+Traceback (most recent call last):
+...
+ValueError: cannot convert float NaN to integer
+>>> add_integer(87, float('inf'))
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
+>>> add_integer(2000202, -float('inf'))
+Traceback (most recent call last):
+...
+OverflowError: cannot convert float infinity to integer
+>>> add_integer()
+Traceback (most recent call last):
+...
+TypeError: add_integer() missing 1 required positional argument: 'a'
+>>> add_integer(None)
 Traceback (most recent call last):
 ...
 TypeError: a must be an integer
->>> add_integer(set())
+>>> add_integer(a)
 Traceback (most recent call last):
 ...
-TypeError: a must be an integer
->>> add_integer("")
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
+NameError: name 'a' is not defined
 
-# Two input addition type errors
->>> add_integer(10, 10+5j)
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
->>> add_integer(10, [])
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
->>> add_integer(10, {})
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
->>> add_integer(10, set())
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
-
->>> add_integer(10, "")
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
