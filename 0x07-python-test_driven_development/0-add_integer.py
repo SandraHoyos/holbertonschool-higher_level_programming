@@ -4,10 +4,10 @@
 
 
 del add_integer(a, b=98):
-    """adds 2 integers
+    """add 2 integers
     returns the addition of
-    a and b, or an error if a and b
-    are not integers or floats"""
+    a and b, or an error if a or b
+    are not integer or float"""
 
     if type(a) is not [int, float]:
         raise TypeError("a must be an integer")
