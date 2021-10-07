@@ -3,7 +3,7 @@
 """adds 2 integers"""
 
 
-del add_integer(a, b=98):
+def add_integer(a, b=98):
     """add 2 integers
     returns the addition of
     a and b, or an error if a or b
