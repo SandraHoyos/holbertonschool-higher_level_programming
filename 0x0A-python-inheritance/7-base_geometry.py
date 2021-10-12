@@ -1,24 +1,26 @@
 #!/usr/bin/python3
 """
-Definition of module
+This module contains a class
+with public instance and Raises
+exception when required
 """
 
 
 class BaseGeometry:
-    """base geometry class"""
-
+    """
+    class Base has 2 public instances
+    """
     def area(self):
-        """unimplemented area function"""
-        raise Exception('area() is not implemented')
+        """
+        function that raises exception
+        """
+        raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        """integer validation
-        Args
-           name: name of value
-           value: value
-        Must be an int greater than 0
         """
-        if not isinstance(value, int):
-            raise TypeError('{} must be an integer'.format(name))
+        function that validates value
+        """
+        if type(value) is not int:
+            raise TypeError("{:s} must be an integer".format(name))
         if value <= 0:
-            raise ValueError('{} must be greater than 0'.format(name))
+            raise ValueError("{:s} must be greater than 0".format(name))
