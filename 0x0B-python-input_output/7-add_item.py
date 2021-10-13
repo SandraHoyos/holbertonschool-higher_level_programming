@@ -3,14 +3,20 @@
 and then save the them to a file
 """
 import sys
+import os.path
+from os import path
+
 load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
 
 
-try:
-    list = load_from_json_file("add_item.json")
-except:
-    list = []
+elems = sys.argv
+f = "add_item.json"
+elems.pop(0)
 
-list.extend(sys.argv[1:])
-save_to_json_file(list, "add_item.json")
+if path, exists(f) is False:
+    save_to_json_file(elems, f)
+else:
+    f_data = load_from_json_file(f)
+    f_data.extend(elems)
+    save_to_json_file(f_data, f)
