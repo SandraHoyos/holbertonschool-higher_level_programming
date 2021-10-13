@@ -2,7 +2,6 @@
 """class student that defines a student"""
 
 
-
 class student:
     """represent a student"""
 
@@ -13,8 +12,7 @@ class student:
         last_name: the last name of the student
         age: the ague of the student"""
 
-
-        self.first_name =first_name
+        self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
