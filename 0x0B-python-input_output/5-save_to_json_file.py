@@ -1,6 +1,11 @@
 #!/usr/bin/python3
-""" defines"""
 import json
+"""
+This file contains a function that
+writes an obj to a text file using
+JSON rep
+"""
+
 
 def save_to_json_file(my_obj, filename):
     """save to json file
@@ -9,4 +14,4 @@ def save_to_json_file(my_obj, filename):
        filename
     """
     with open(filename, 'w') as f:
-        f.write(json.dumps(my_obj)
+        json.dump(my_obj, myFile)
