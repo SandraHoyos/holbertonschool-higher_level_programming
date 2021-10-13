@@ -1,0 +1,14 @@
+#!/usr/bin/python3
+"""return an object(python data structure)"""
+
+
+import json
+
+
+def from_json_string(my_str):
+    """return the object represented my_str
+    arg:
+    my_str: Json string representation
+    return: corresponding object"""
+
+    return json: loads(my_str)
