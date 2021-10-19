@@ -1,16 +1,13 @@
 #!/usr/bin/python3
-# base.py
+
 """Defines a base model class."""
-import json
-import csv
-import turtle
 
 
 class Base:
     """Represent the base model.
-    Represents the "base" for all other classes in project 0x0C*.
-    Attributes:
-        __nb_objects (int): The number of instantiated Bases.
+       Attributes:
+       private __nb_objects (int):
+       public id (int)
     """
 
     __nb_objects = 0
