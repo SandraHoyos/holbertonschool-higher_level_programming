@@ -120,3 +120,17 @@ class Base:
                 writer.writeheader()
                 for data in dict_data:
                     writer.writerow(data)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Loads from csv file"""
+        list_instance = []
+        name = cls.__name__ + ".csv"
+        if os.path.isfile(name):
+            with open(name, "r") as file:
+                reader = csv.DictReader(file)
+                for row in reader:
+                    d = {key: int(value) for key, value in row.items()}
+                    list_instance.append(cls.create(**d))
+            return list_instance
+        return []
