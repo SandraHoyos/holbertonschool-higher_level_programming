@@ -2,9 +2,6 @@
 """Base class"""
 
 import json
-import os
-import csv
-
 
 
 class Base:
@@ -41,7 +38,6 @@ class Base:
             return "[]"
         return json.dumps(list_dictionaries)
 
-        
     @classmethod
     def save_to_file(cls, list_objs):
         """ writes the JSON string representation of
@@ -59,7 +55,7 @@ class Base:
                 file.write(cls.to_json_string(list_instance))
 
     @staticmethod
-    def from_json_string(list_dictionaries):
+    def from_json_string(json_string):
         """Returns the list of the JSON string
         representation json_string
         Args:
@@ -68,9 +64,9 @@ class Base:
         """
         if list_dictionaries is None:
             return []
-        if list_dictionaries == [] or not isinstance(list_dictionaries, str):
+        if list_dictionaries == [] or not isinstance(json_string, str):
             return []
-        return json.dumps(list_dictionaries)
+        return json.dumps(json_string)
 
     @classmethod
     def create(cls, **dictionary):
