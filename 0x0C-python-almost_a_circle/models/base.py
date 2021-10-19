@@ -56,18 +56,18 @@ class Base:
                 file.write(cls.to_json_string(list_instance))
 
     @staticmethod
-    def from_json_string(json_string):
+    def from_json_string(list_dictionaries):
         """Returns the list of the JSON string
         representation json_string
         Args:
-            json_string(str): a string representing a list
+            list_dictionaries(str): a string representing a list
             of dictionaries
         """
-        if json_string is None:
+        if list_dictionaries is None:
             return []
-        if json_string == [] or not isinstance(json_string, str):
+        if list_dictionaries == [] or not isinstance(list_dictionaries, str):
             return []
-        return json.loads(json_string)
+        return json.loads(list_dictionaries)
 
     @classmethod
     def create(cls, **dictionary):
