@@ -84,15 +84,17 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """A class method that returns a
-        list instance
         """
-        list_instance = []
-        file_name = cls.__name__ + ".json"
-        if os.path.isfile(file_name):
-            with open(file_name, "r") as file:
-                s = cls.from_json_string(file.read())
-            for i in s:
-                list_instance.append(cls.create(**i))
-            return list_instance
-        return []
+        This function returns a list
+        of instances
+        """
+        fn = cls.__name__ + ".json"
+        lst = []
+        try:
+            with open(fn, mode="r") as myFile:
+                lst = cls.from_json_string(myFile.read())
+            for i, j in enumerate(lst):
+                lst[i] = cls.create(**lst[i])
+        except:
+            pass
+        return (lst)
