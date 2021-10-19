@@ -5,26 +5,22 @@ import json
 
 
 class Base:
-    """Represents the base class
-    Observation:
-        The class is used to manage id attribute
-        in all your future classes and to avoid duplicating
-        the same code (by extension, same bugs)
     """
-
+    This class has a private attribute __nb_objects = 0
+    a class constructor definition to check for id
+    """
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """Instantiates the id class with
-        Args:
-            id(int): the class id
+        """
+        Instantiation of class which checks for id
         """
         if id is not None:
             self.id = id
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
-
+        
     @staticmethod
     def to_json_string(list_dictionaries):
 
