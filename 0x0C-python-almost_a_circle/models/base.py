@@ -4,7 +4,7 @@
 import json
 import os
 import csv
-import turtle
+
 
 
 class Base:
@@ -30,15 +30,18 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
+
         """Returns the JSON string representation
         of list_dictionaries
         Args:
             list_dictionaries(list): list of dictionary
         """
+
         if list_dictionaries is None or list_dictionaries is " ":
             return "[]"
         return json.dumps(list_dictionaries)
 
+        
     @classmethod
     def save_to_file(cls, list_objs):
         """ writes the JSON string representation of
@@ -67,7 +70,7 @@ class Base:
             return []
         if list_dictionaries == [] or not isinstance(list_dictionaries, str):
             return []
-        return json.loads(list_dictionaries)
+        return json.dumps(list_dictionaries)
 
     @classmethod
     def create(cls, **dictionary):
