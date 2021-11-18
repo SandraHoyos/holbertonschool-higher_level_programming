@@ -2,7 +2,8 @@
 -- user_0d_2 should have only SELECT privilege in the database hbtn_0d_2
 -- The user_0d_2 password should be set to user_0d_2_pwd
 
-CREATE TABLE IF NOT EXISTS force_name (
-       id INT,
-       NAME VARCHAR(256) NOT NULL
-);
+CREATE TABLE IF NOT EXISTS hbtn_0d_2;
+CREATE USER IF NOT EXISTS 'user_0d_2'@'localhost'IDENTIFIED BY 'user_od_2_pwd';
+GRANT USAGE ON *.* TO 'user_0d_2'@'localhost';
+GRANT SELECT ON "hbtn_0d_2".* TO 'user_0d_2'@'localhost';
+FLUSH PRIVILEGES;
