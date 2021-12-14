@@ -6,4 +6,3 @@ if (isNaN(argsToConvert)) {
 } else {
     console.log('My number: ' + argsToConvert);
 }
-
