@@ -1,6 +1,9 @@
 #!/usr/bin/node
-if (process.argv.length < 4) {
+const max = process.argv;
+if (!max[3]) {
   console.log(0);
-} else {
-  console.log(process.argv.splice(2, process.argv.length - 1).sort().reverse()[1]);
+} else if (max[2] && max[3]) {
+  max.sort();
+  const number = max.length;
+  console.log(parseInt(max[number - 2]));
 }
