@@ -4,13 +4,7 @@ let squareIndicator = '';
 if (!inputSize) {
  console.log('Missing size');
 } else {
-  for (let i = 0; i < inputSize; i++) {
-    for (let j = 0; j < inputSize; j++) {
-      squareIndicator += 'X';
-    }
-  if (i !== inputSize - 1) {
-   squareIndicator += '\n';
+  for (let i = 0; i < process.argv[2]; i++) {
+    console.log('X'.repeat(process.argv[2]));
   }
- }
- console.log(squareIndicator);
 }
