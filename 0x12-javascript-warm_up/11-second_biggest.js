@@ -5,4 +5,4 @@ if (args.length > 1) {
   args.sort();
   num = args[args.length - 2];
 }
-console.log(num);
+console.log(parseInt(num));
