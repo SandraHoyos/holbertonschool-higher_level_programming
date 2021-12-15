@@ -5,6 +5,7 @@ class Rectangle {
       this.width = w;
       this.height = h;
     }
+    return;
   }
   print () {
     for (let i = 0; i < this.height; i++) {
