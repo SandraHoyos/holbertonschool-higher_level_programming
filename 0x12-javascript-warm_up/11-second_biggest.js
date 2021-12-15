@@ -3,6 +3,6 @@ let num = 0;
 const args = process.argv.slice(2);
 if (args.length > 1) {
   args.sort();
-  num = args[args.length - 2];
+  num = args.reverse();
 }
-console.log(parseInt(num));
+console.log(parseInt(num[1]));
