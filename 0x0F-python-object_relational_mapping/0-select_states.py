@@ -4,14 +4,17 @@ script to list all states from db hbtn_0e_usa
 takes 3 args username, mysql passwd, db name
 """
 
+
+import MySQLdb
+from sys import argv
+
 if __name__ == "__main__":
-    from sys import argv
-    import MySQLdb
-    db = MySQLdb.connect(host="localhost", port=3306, user=argv[1], passwd=argv[2], db=argv[3])
-    c = db.cursor()
-    c.execute("""SELECT * FROM states ORDER BY states.id ASC""")
-    lst = c.fetchall()
-    for r in lst:
-        print(r)
+    conn = MySQLdb.connect(host="localhost", port=3306, user=argv[1],
+                           password=argv[2], database=argv[3], charset="utf8")
+    c = conn.cursor()
+    c.execute("SELECT * FROM states ORDER BY id ASC")
+    rows = c.fetchall()
+    for row in rows:
+        print(row)
     c.close()
-    db.close()
+    conn.close()
