@@ -3,6 +3,7 @@
 script to list all states from db hbtn_0e_usa
 takes 3 args username, mysql passwd, db name
 """
+
 if __name__ == "__main__":
     from sys import argv
     import MySQLdb
