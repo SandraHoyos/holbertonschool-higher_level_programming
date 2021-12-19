@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""This script is listing all states from the database hbtn_0e_0_usa order by id"""
+"""This script is listing all states
+from the database hbtn_0e_0_usa order by id
+"""
 
 
 if __name__ == "__main__":
