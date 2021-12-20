@@ -7,7 +7,8 @@ SQLAlchemy Statements
 
 from sys import argv
 from sqlalchemy.orm import sessionmaker
-from model_state import Base, State
+from relationship_state import Base, State
+from relationship_city import City
 
 from sqlalchemy import (create_engine)
 
@@ -27,11 +28,11 @@ def connection():
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    state = session.query(State).filter_by(name=argv[4]).first()
-    if state is not None:
-        print(state.id)
-    else:
-        print("Not found")
+    new_state = State(name="California")
+    new_state.cities = [City(name="San Francisco")]
+    session.add(new_state)
+    session.commit()
+
     session.close()
 
 

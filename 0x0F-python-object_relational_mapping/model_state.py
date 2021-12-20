@@ -1,14 +1,20 @@
 #!/usr/bin/python3
-"""python file containing the class definition of State and declarative base"""
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
 
+"""
+Class definition of State
+
+"""
+
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String
 
 Base = declarative_base()
 
 
 class State(Base):
-    """State class inherits from Base"""
+    """ State table """
     __tablename__ = 'states'
-    id = Column(Integer, primary_key=True, nullable=False)
+
+    id = Column(Integer, primary_key=True,
+                autoincrement=True, nullable=True)
     name = Column(String(128), nullable=False)
