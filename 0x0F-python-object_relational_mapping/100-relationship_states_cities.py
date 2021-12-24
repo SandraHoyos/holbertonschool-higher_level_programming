@@ -7,7 +7,8 @@ SQLAlchemy Statements
 
 from sys import argv
 from sqlalchemy.orm import sessionmaker
-from model_state import Base, State
+from relationship_state import Base, State
+from relationship_city import City
 
 from sqlalchemy import (create_engine)
 
@@ -26,8 +27,12 @@ def connection():
 
     Session = sessionmaker(bind=engine)
     session = Session()
-    for state in session.query(State).order_by(State.id).all():
-        print("{}: {}".format(state.id, state.name))
+
+    new_state = State(name="California")
+    new_state.cities = [City(name="San Francisco")]
+    session.add(new_state)
+    session.commit()
+
     session.close()
 
 

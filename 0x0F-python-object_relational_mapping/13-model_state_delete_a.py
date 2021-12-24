@@ -1,18 +1,39 @@
 #!/usr/bin/python3
-from sqlalchemy.ext.declarative import declarative_base
-from sys import argv
-from sqlalchemy import create_engine
-from model_state import Base, State
-from sqlalchemy.orm import Session
-Base = declarative_base()
 
-if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.
-                           format(argv[1], argv[2], argv[3]))
-    Base.metadata.create_all(engine)
-    session = Session(engine)
-    for state in session.query(State):
+"""
+SQLAlchemy Statements
+
+"""
+
+from sys import argv
+from sqlalchemy.orm import sessionmaker
+from model_state import Base, State
+
+from sqlalchemy import (create_engine)
+
+
+def connection():
+    """Connection to database"""
+    try:
+        engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
+                               format(
+                                   argv[1], argv[2],
+                                   argv[3]), pool_pre_ping=True)
+        Base.metadata.create_all(engine)
+    except Exception:
+        print("Can't connect to DB")
+        return 0
+
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    for state in session.query(State).all():
         if 'a' in state.name:
             session.delete(state)
-            session.commit()
+
+    session.commit()
     session.close()
+
+
+if __name__ == "__main__":
+    connection()

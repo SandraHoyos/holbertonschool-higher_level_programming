@@ -26,8 +26,12 @@ def connection():
 
     Session = sessionmaker(bind=engine)
     session = Session()
-    for state in session.query(State).order_by(State.id).all():
-        print("{}: {}".format(state.id, state.name))
+
+    state = session.query(State).filter_by(name=argv[4]).first()
+    if state is not None:
+        print(state.id)
+    else:
+        print("Not found")
     session.close()
 
 

@@ -1,23 +1,38 @@
 #!/usr/bin/python3
+
 """
-script to list all obj that contain letter a
-takes 3 args
+SQLAlchemy Statements
+
 """
+
+from sys import argv
+from sqlalchemy.orm import sessionmaker
+from model_state import Base, State
+
+from sqlalchemy import (create_engine)
+
+
+def connection():
+    """Connection to database"""
+    try:
+        engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
+                               format(
+                                   argv[1], argv[2],
+                                   argv[3]), pool_pre_ping=True)
+        Base.metadata.create_all(engine)
+    except Exception:
+        print("Can't connect to DB")
+        return 0
+
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    for state in session.query(State).all():
+        if 'a' in state.name:
+            print("{}: {}".format(state.id, state.name))
+
+    session.close()
 
 
 if __name__ == "__main__":
-    from sys import argv
-    from model_state import State, Base
-    from sqlalchemy import create_engine
-    from sqlalchemy.orm import sessionmaker
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
-        argv[1], argv[2], argv[3]), pool_pre_ping=True)
-    session = sessionmaker(bind=engine)
-    Base.metadata.create_all(engine)
-    st = session().query(State).filter(State.name.like('%a%')).order_by(
-        State.id).all()
-    if st:
-        for stat in st:
-            if 'a' in stat.name:
-                print("{}: {}".format(stat.id, stat.name))
-    session().close()
+    connection()
