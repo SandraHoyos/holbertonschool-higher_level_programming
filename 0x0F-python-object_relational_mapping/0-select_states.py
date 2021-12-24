@@ -9,7 +9,7 @@ from sys import argv
 if __name__ == "__main__":
     db = MySQLdb.connect(user=argv[1], password=argv[2], database=argv[3])
     cur = db.cursor()
-    query = 'SELECT * FROM states;'
+    query = 'SELECT * FROM states ORDER BY states.id ASC'
     cur.execute(query)
     for row in cur.fetchall():
         print(row)
