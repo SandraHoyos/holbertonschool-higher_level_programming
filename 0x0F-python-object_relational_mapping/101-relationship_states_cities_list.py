@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-script that creates the State “California” with the
-City “San Francisco” from the database hbtn_0e_100_usa
+script that lists all State objects, and corresponding
+City objects, contained in the database hbtn_0e_101_usa
 """
 
 import sqlalchemy
@@ -17,8 +17,9 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    califo = State(name='California')
-    califo.cities = [City(name='San Francisco')]
-    session.add(califo)
-    session.commit()
+    row = session.query(State).all()
+    for states in row:
+        print("{}: {}".format(states.id, states.name))
+        for city in states.cities:
+            print("    {}: {}".format(city.id, city.name))
     session.close()

@@ -1,21 +1,16 @@
 #!/usr/bin/python3
-
 """
-Class definition of State
-
+class of city
 """
 
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.sql.schema import ForeignKey
-
-from relationship_state import Base
+import sqlalchemy
+from sqlalchemy import Column, Integer, String, ForeignKey
+from relationship_state import Base, State
 
 
 class City(Base):
-    """ City table """
+    """Representation class of city """
     __tablename__ = 'cities'
-
-    id = Column(Integer, primary_key=True,
-                autoincrement=True, nullable=True)
+    id = Column(Integer, primary_key=True)
     name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey("states.id"), nullable=False)
+    state_id = Column(Integer, ForeignKey('states.id'))

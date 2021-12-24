@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
-script that lists all State objects from the database hbtn_0e_6_usa
+script that lists all City objects from the database hbtn_0e_101_usa
 """
 
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
+import sqlalchemy
 from sys import argv
 from sqlalchemy import create_engine
-from model_state import Base, State
+from relationship_state import Base, State
+from relationship_city import City
 from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
@@ -16,6 +16,7 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    for state in session.query(State).order_by(State.id):
-        print("{}: {}".format(state.id, state.name))
+    row = session.query(City).all()
+    for city in row:
+        print("{}: {} -> {}".format(city.id, city.name, city.state.name))
     session.close()

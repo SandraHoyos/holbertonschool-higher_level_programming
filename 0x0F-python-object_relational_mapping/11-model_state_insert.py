@@ -1,39 +1,23 @@
 #!/usr/bin/python3
-
 """
-SQLAlchemy Statements
-
+script that adds the State object “Louisiana” to the database hbtn_0e_6_usa
 """
 
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String
 from sys import argv
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
 from model_state import Base, State
-
-from sqlalchemy import (create_engine)
-
-
-def connection():
-    """Connection to database"""
-    try:
-        engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
-                               format(
-                                   argv[1], argv[2],
-                                   argv[3]), pool_pre_ping=True)
-        Base.metadata.create_all(engine)
-    except Exception:
-        print("Can't connect to DB")
-        return 0
-
-    Session = sessionmaker(bind=engine)
-    session = Session()
-
-    new_state = State(name='Louisiana')
-    session.add(new_state)
-    session.commit()
-    print(new_state.id)
-
-    session.close()
-
+from sqlalchemy.orm import Session
+Base = declarative_base()
 
 if __name__ == "__main__":
-    connection()
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.
+                           format(argv[1], argv[2], argv[3]))
+    Base.metadata.create_all(engine)
+    session = Session(engine)
+    obj = State(name='Louisiana')
+    session.add(obj)
+    session.commit()
+    print(obj.id)
+    session.close()
