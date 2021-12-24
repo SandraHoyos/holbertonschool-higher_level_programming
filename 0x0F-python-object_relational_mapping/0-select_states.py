@@ -1,7 +1,8 @@
 #!/urs/bin/python3
 """
-Pythos script that list all states from database hbtn_0e_0usa
+Python script that list all states from database hbtn_0e_0usa
 """
+
 
 import MySQLdb
 from sys import argv
