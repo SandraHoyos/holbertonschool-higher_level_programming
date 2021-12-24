@@ -6,6 +6,9 @@ usin 3 arguments: user, password and database
 import MySQLdb
 import sys
 
+def new_func(row):
+    print(row)
+
 if __name__ == "__main__":
    
 
@@ -14,4 +17,4 @@ if __name__ == "__main__":
     query = 'SELECT * FROM states ORDER BY states.id ASC'
     cur.execute(query)
     for row in cur.fetchall():
-        print(row)
+        new_func(row)
