@@ -6,15 +6,10 @@ usin 3 arguments: user, password and database
 import MySQLdb
 import sys
 
-def new_func(row):
-    print(row)
-
 if __name__ == "__main__":
-   
-
     db = MySQLdb.connect(user=argv[1], password=argv[2], database=argv[3])
     cur = db.cursor()
     query = 'SELECT * FROM states ORDER BY states.id ASC'
     cur.execute(query)
     for row in cur.fetchall():
-        new_func(row)
+        print(row)
