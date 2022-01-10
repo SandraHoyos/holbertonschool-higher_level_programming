@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-""" Test function find_peak """
-#!/usr/bin/python3
 """Defines a peak-finding algorithm."""
 
 
