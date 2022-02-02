@@ -1,6 +1,7 @@
 #!/usr/bin/node
-// reads file passed as arg
-const fs = require('fs');
-fs.writeFile(process.argv[2], process.argv[3], (error) => {
+// makes get request and prints status code
+const request = require('request');
+request(process.argv[2], function (error, response, body) {
   error && console.log(error);
+  response && console.log('code:', response.statusCode);
 });
